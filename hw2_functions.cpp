@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 
@@ -38,22 +39,28 @@ bool graduationEligibility(class_type* courses)
     return true;
 }
 
-int getNumberOfCourses()
+
+vector<int> getCourseSelections()
 {
     int num_courses = 0;
     cout << "Enter the number of available courses..." << endl;
     cin >>  num_courses;
-    return num_courses;
-}
-
-int * getCourseSelections()
-{
-    int num_courses = getNumberOfCourses();
-    static int course_selections[num_courses];
+    vector<int> course_selections;
+    int temp = 0;
     for (int i = 0; i < num_courses; i++)
     {
         cout<< "Enter which course you are taking..." <<  endl;
-        cin >> course_selections[i];
+        cin >> temp;
+        course_selections.push_back(temp);
     }
+    cout << endl;
     return course_selections;
+}
+
+void displayCoursesAdded(vector <int> input, class_type* data)
+{
+    for (auto i = input.begin(); i != input.end(); i++)
+    {
+        cout << data[*i].code << " (" << data[*i].name << " added)" << endl;
+    }
 }
