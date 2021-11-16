@@ -9,6 +9,8 @@ struct class_type
     int year;
     int course_num;
     int version;
+    /*
+
     bool operator< (class_type &second){
         if (year < second.year)
         {
@@ -31,6 +33,15 @@ struct class_type
         }
         return false;
     }
+    */
+   bool operator< (class_type &second)
+   {
+       if (year < second.year)
+       {
+           return true;
+       }
+       return false;
+   }
 
 };
 
@@ -38,7 +49,7 @@ class_type * getClassesFromFile(string file);
 
 bool graduationEligibility(class_type* courses);
 
-vector<int> getCourseSelections();
+vector<class_type> getCourseSelections(class_type *data);
 
-void displayCoursesAdded(vector <int> input, class_type* data);
+void displayCoursesAdded(vector <class_type> data);
 

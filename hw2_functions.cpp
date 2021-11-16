@@ -40,27 +40,28 @@ bool graduationEligibility(class_type* courses)
 }
 
 
-vector<int> getCourseSelections()
+vector<class_type> getCourseSelections(class_type *data)
 {
     int num_courses = 0;
     cout << "Enter the number of available courses..." << endl;
     cin >>  num_courses;
-    vector<int> course_selections;
+    vector<class_type> courses;
     int temp = 0;
     for (int i = 0; i < num_courses; i++)
     {
         cout<< "Enter which course you are taking..." <<  endl;
         cin >> temp;
-        course_selections.push_back(temp);
+        courses.push_back(data[temp]);
     }
     cout << endl;
-    return course_selections;
+    return courses;
 }
 
-void displayCoursesAdded(vector <int> input, class_type* data)
+void displayCoursesAdded(vector <class_type> courses)
 {
-    for (auto i = input.begin(); i != input.end(); i++)
+    for (auto i = courses.begin(); i != courses.end(); i++)
     {
-        cout << data[*i].code << " (" << data[*i].name << " added)" << endl;
+        auto current = *i;
+        cout << current.code << " (" << current.name << " added)" << endl;
     }
 }
